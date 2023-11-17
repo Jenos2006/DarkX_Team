@@ -1,10 +1,15 @@
-local button = script.Parent
-if button:IsA("TextButton") then
-button.Text = "on/off"
-local function onButtonTouched()
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+
+local button = Instance.new("TextButton")
+button.Parent = screenGui
+button.Position = UDim2.new(0.5, 0, 0.5, 0)
+button.Size = UDim2.new(0, 200, 0, 50)
+button.Text = "Klick mich!"
+
+local function onButtonClicked()
+    print("Button wurde geklickt!")
+end
+
+button.MouseButton1Click:Connect(onButtonClicked)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Jenos2006/DarkX_Team/main/Fullbright_by_Jenos2006"))()
-end
-button.Touched:Connect(onButtonTouched)
-else
-warn("Script parent is not a TextButton.")
-end
