@@ -1,6 +1,10 @@
 local button = script.Parent
+if button:IsA("TextButton") then
 button.Text = "on/off"
 local function onButtonTouched()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Jenos2006/DarkX_Team/main/Fullbright_by_Jenos2006"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Jenos2006/DarkX_Team/main/Fullbright_by_Jenos2006"))()
 end
 button.Touched:Connect(onButtonTouched)
+else
+warn("Script parent is not a TextButton.")
+end
