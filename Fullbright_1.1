@@ -1,0 +1,6 @@
+local button = script.Parent
+button.Text = "on/off"
+local function onButtonTouched()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Jenos2006/DarkX_Team/main/Fullbright_by_Jenos2006"))()
+end
+button.Touched:Connect(onButtonTouched)
