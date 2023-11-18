@@ -1,15 +1,54 @@
-local screenGui = Instance.new("ScreenGui")
-screenGui.Parent = game.Players.LocalPlayer.PlayerGui
+local gui = Instance.new("ScreenGui")
+gui.Parent = game.Players.LocalPlayer.PlayerGui
 
-local button = Instance.new("TextButton")
-button.Parent = screenGui
-button.Position = UDim2.new(0.5, 0, 0.5, 0)
-button.Size = UDim2.new(0, 200, 0, 50)
-button.Text = "Klick mich!"
+local isDragging = false
 
-local function onButtonClicked()
-    print("Button wurde geklickt!")
-end
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0, 20, 0, 20)
+closeButton.Position = UDim2.new(1, -25, 0, 5)
+closeButton.BackgroundColor3 = Color3.new(1, 0, 0)
+closeButton.Text = "-"
+closeButton.TextColor3 = Color3.new(0, 0, 0)
+closeButton.Parent = gui
 
-button.MouseButton1Click:Connect(onButtonClicked)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Jenos2006/DarkX_Team/main/Fullbright_by_Jenos2006"))()
+local toggleButton = Instance.new("TextButton")
+toggleButton.Size = UDim2.new(0, 60, 0, 20)
+toggleButton.Position = UDim2.new(0.5, -30, 0.5, -10)
+toggleButton.BackgroundColor3 = Color3.new(0, 1, 0)
+toggleButton.Text = "in/off"
+toggleButton.TextColor3 = Color3.new(0, 0, 0)
+toggleButton.Parent = gui
+
+local madeByText = Instance.new("TextLabel")
+madeByText.Size = UDim2.new(1, 0, 0, 20)
+madeByText.Position = UDim2.new(0, 0, 1, -20)
+madeByText.BackgroundColor3 = Color3.new(0, 0, 0)
+madeByText.Text = "Made by Jenos2006"
+madeByText.TextColor3 = Color3.new(1, 1, 1)
+madeByText.Parent = gui
+
+closeButton.MouseButton1Click:Connect(function()
+    gui:Destroy()
+end)
+
+toggleButton.Activated:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Jenos2006/DarkX_Team/main/Fullbright_by_Jenos2006"))()
+end)
+
+gui.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        isDragging = true
+        local initialPosition = gui.Position
+        local initialMousePosition = input.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                isDragging = false
+            end
+        end)
+        while isDragging do
+            wait()
+            local delta = input.Position - initialMousePosition
+            gui.Position = UDim2.new(initialPosition.X.Scale, initialPosition.X.Offset + delta.X, initialPosition.Y.Scale, initialPosition.Y.Offset + delta.Y)
+        end
+    end
+end)
