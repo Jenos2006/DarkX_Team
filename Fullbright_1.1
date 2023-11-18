@@ -1,19 +1,9 @@
 local gui = Instance.new("ScreenGui")
 gui.Parent = game.Players.LocalPlayer.PlayerGui
 
-local isDragging = false
-
-local closeButton = Instance.new("TextButton")
-closeButton.Size = UDim2.new(0, 20, 0, 20)
-closeButton.Position = UDim2.new(1, -25, 0, 5)
-closeButton.BackgroundColor3 = Color3.new(1, 0, 0)
-closeButton.Text = "-"
-closeButton.TextColor3 = Color3.new(0, 0, 0)
-closeButton.Parent = gui
-
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(0, 60, 0, 20)
-toggleButton.Position = UDim2.new(0.5, -30, 0.5, -10)
+toggleButton.Position = UDim2.new(0, 10, 0.5, -10)
 toggleButton.BackgroundColor3 = Color3.new(0, 1, 0)
 toggleButton.Text = "in/off"
 toggleButton.TextColor3 = Color3.new(0, 0, 0)
@@ -23,32 +13,11 @@ local madeByText = Instance.new("TextLabel")
 madeByText.Size = UDim2.new(1, 0, 0, 20)
 madeByText.Position = UDim2.new(0, 0, 1, -20)
 madeByText.BackgroundColor3 = Color3.new(0, 0, 0)
-madeByText.Text = "Made by Jenos2006"
+madeByText.Text = "made by Jenos2006 and join my Discord!"
 madeByText.TextColor3 = Color3.new(1, 1, 1)
 madeByText.Parent = gui
 
-closeButton.MouseButton1Click:Connect(function()
-    gui:Destroy()
-end)
-
 toggleButton.Activated:Connect(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Jenos2006/DarkX_Team/main/Fullbright_by_Jenos2006"))()
-end)
 
-gui.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        isDragging = true
-        local initialPosition = gui.Position
-        local initialMousePosition = input.Position
-        input.Changed:Connect(function()
-            if input.UserInputState == Enum.UserInputState.End then
-                isDragging = false
-            end
-        end)
-        while isDragging do
-            wait()
-            local delta = input.Position - initialMousePosition
-            gui.Position = UDim2.new(initialPosition.X.Scale, initialPosition.X.Offset + delta.X, initialPosition.Y.Scale, initialPosition.Y.Offset + delta.Y)
-        end
-    end
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Jenos2006/DarkX_Team/main/Fullbright_1.0"))()
 end)
