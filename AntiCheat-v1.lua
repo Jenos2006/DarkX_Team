@@ -1,4 +1,8 @@
--- Anti-Cheat System
+--[
+Note:
+THIS IS A SERVER SCRIPT AND NOT A STARTER-PLAYER SCRIPT!
+by Dark X Team 
+]--
 
 local Players = game:GetService("Players")
 local CHECK_INTERVAL = 2 -- Interval in seconds between checks
