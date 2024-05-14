@@ -1,9 +1,14 @@
---[
+--[[
+AntiCheat Script v1
 Note:
-THIS IS A SERVER SCRIPT AND NOT A STARTER-PLAYER SCRIPT!
-by Dark X Team 
-]--
+This script is intended for server-side execution and is not meant for the starter player.
+By Dark X Team
+]]
 
+
+
+
+-- main
 local Players = game:GetService("Players")
 local CHECK_INTERVAL = 2 -- Interval in seconds between checks
 local MAX_TELEPORT_DISTANCE = 50 -- Max distance a player can move in CHECK_INTERVAL seconds
