@@ -1,5 +1,5 @@
 --[[
-AntiCheat Script v1
+AntiCheat Script v1.2
 Note:
 This script is intended for server-side execution and is not meant for the starter player.
 By Dark X Team
